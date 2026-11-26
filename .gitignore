@@ -1,0 +1,91 @@
+# ---------------------------------------------------------------------------
+# WinDroid - Android / Gradle / Kotlin / IntelliJ ignores
+# ---------------------------------------------------------------------------
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+local.properties
+gradle-app.setting
+.gradletasknamecache
+
+# Kotlin
+.kotlin/
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.aar
+*.dex
+*.class
+.cxx/
+.externalNativeBuild/
+release/
+captures/
+output.json
+*.hprof
+*.jks
+*.keystore
+!debug.keystore
+
+# Generated sources / tooling
+gen/
+out/
+*.iml
+
+# IntelliJ IDEA
+.idea/
+*.ipr
+*.iws
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/navEditor.xml
+
+# Eclipse / other IDEs
+.classpath
+.project
+.settings/
+.factorypath
+bin/
+.metadata/
+*.log
+
+# macOS / Windows / Linux noise
+.DS_Store
+DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+*~
+*.swp
+*.swo
+*#*#
+.nfs*
+
+# Local environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+secrets.properties
+
+# Native runtime payloads (Wine / Box64 / imagefs) must never be committed
+runtime/
+imagefs/
+rootfs/
+*.img
+*.tar.xz
+*.tar.gz
