@@ -134,8 +134,11 @@ class XServerStateTest {
         val snapshot = IntArray(16)
         target.copyFramebufferTo(snapshot)
 
+        // fillRect(0, 0, 2, 2) covers indices 0, 1, 4, 5 (row-major, width 4).
         assertEquals(0xFFAA0000.toInt(), snapshot[0])
-        assertEquals(0, snapshot[5])
+        assertEquals(0xFFAA0000.toInt(), snapshot[5])
+        // (x = 2, y = 2) is outside the filled rect and must stay untouched.
+        assertEquals(0, snapshot[10])
 
         target.fillRect(0, 0, 2, 2, 0xFF00AA00.toInt())
 
