@@ -201,7 +201,9 @@ class WineSessionController(
             guestProcess = process
 
             _sessionState.value = SessionState.RUNNING
-            log("wine runtime up (pid ${runCatching { process.pid() }.getOrDefault(-1L)})")
+            // `java.lang.Process.pid()` is not part of the Android SDK surface,
+            // so the process handle itself is the most portable identity we have.
+            log("wine runtime up: $process")
 
             pumpStream(scope, process.inputStream.bufferedReader(), "wine")
             pumpStream(scope, process.errorStream.bufferedReader(), "wine!")

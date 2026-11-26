@@ -93,7 +93,7 @@ class ImageFsManager(private val filesDir: File) {
      * Imports a container bundle into [rootFsDir].
      *
      * * `.zip` — streamed out safely with Zip-Slip protection, progress events
-     *   per chunk, and `bin/*` binaries marked executable afterwards.
+     *   per chunk, and every binary under `bin` marked executable afterwards.
      * * `.tar.xz` / `.txz` — explained instead of attempted: the APK ships no
      *   native liblzma, so the flow returns one actionable message telling the
      *   user how to repack (or fetch the `.zip` bundle) rather than crashing.

@@ -318,7 +318,7 @@ fun <T> DropdownField(
     label: String,
     options: List<T>,
     selected: T,
-    optionLabel: (T) -> String,
+    optionLabel: @Composable (T) -> String,
     onSelected: (T) -> Unit,
     modifier: Modifier = Modifier,
 ) {
