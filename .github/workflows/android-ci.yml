@@ -76,7 +76,7 @@ jobs:
         with:
           files: dist/*.apk
           generate_release_notes: true
-          title: "WinDroid ${{ github.ref_name }}"
+          name: "WinDroid ${{ github.ref_name }}"
           body: |
             ## WinDroid ${{ github.ref_name }}
 
