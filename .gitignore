@@ -83,9 +83,9 @@ Desktop.ini
 secrets.properties
 
 # Native runtime payloads (Wine / Box64 / imagefs) must never be committed
-runtime/
-imagefs/
-rootfs/
+/runtime/
+/imagefs/
+/rootfs/
 *.img
 *.tar.xz
 *.tar.gz

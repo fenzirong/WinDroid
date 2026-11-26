@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WinDroid</string>
+
+    <!-- Top-level navigation -->
+    <string name="nav_containers">Containers</string>
+    <string name="nav_input">Input</string>
+    <string name="nav_runtime">Runtime</string>
+
+    <!-- Shared actions -->
+    <string name="action_back">Back</string>
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_run">Run</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="action_add">Add</string>
+    <string name="action_remove">Remove</string>
+
+    <!-- Container list -->
+    <string name="containers_title">Windows Containers</string>
+    <string name="containers_create">New container</string>
+    <string name="containers_empty_title">No containers yet</string>
+    <string name="containers_empty_body">Create a container to pick the resolution, translation layers and input mapping for your Windows apps.</string>
+    <string name="containers_delete_title">Delete container?</string>
+    <string name="containers_delete_body">“%1$s” and its saved settings will be removed from this device.</string>
+    <string name="containers_config_summary">%1$s · DPI %2$d · %3$d Hz</string>
+    <string name="containers_count">%1$d containers</string>
+
+    <!-- Runtime readiness banner -->
+    <string name="runtime_banner_full_title">Wine + Box64 runtime ready</string>
+    <string name="runtime_banner_full_body">Sessions launch on the full Wine + Box64 stack.</string>
+    <string name="runtime_banner_demo_title">Built-in Interactive Demo Desktop</string>
+    <string name="runtime_banner_demo_body">Runtime image not installed — sessions fall back to the demo desktop. Tap to install the runtime.</string>
+    <string name="runtime_banner_checking">Checking runtime…</string>
+
+    <!-- Connected devices -->
+    <string name="devices_title">Connected devices</string>
+    <string name="devices_mouse_one">1 mouse</string>
+    <string name="devices_mouse_many">%1$d mice</string>
+    <string name="devices_keyboard_one">1 keyboard</string>
+    <string name="devices_keyboard_many">%1$d keyboards</string>
+    <string name="devices_none">No external mouse or keyboard — touch only</string>
+    <string name="devices_touch_only">Touch only</string>
+    <string name="devices_refresh">Rescan devices</string>
+    <string name="devices_summary">%1$s · %2$s</string>
+    <string name="devices_hardware_ready">External input ready</string>
+    <string name="devices_hardware_missing">Touch fallback active</string>
+
+    <!-- Container editor -->
+    <string name="editor_title">Edit container</string>
+    <string name="editor_title_new">New container</string>
+    <string name="editor_section_general">General</string>
+    <string name="editor_section_display">Display</string>
+    <string name="editor_section_graphics">Graphics</string>
+    <string name="editor_section_wine">Wine &amp; audio</string>
+    <string name="editor_section_drives">Drive mappings</string>
+    <string name="editor_section_input">Input</string>
+    <string name="editor_field_name">Container name</string>
+    <string name="editor_field_wine_version">Wine version</string>
+    <string name="editor_field_startup_command">Startup command</string>
+    <string name="editor_field_resolution">Resolution preset</string>
+    <string name="editor_field_graphics_driver">Graphics driver</string>
+    <string name="editor_field_dx_wrapper">DX wrapper</string>
+    <string name="editor_field_box64">Box64 preset</string>
+    <string name="editor_field_audio">Audio driver</string>
+    <string name="editor_field_mouse_mode">Pointer mode</string>
+    <string name="editor_field_sensitivity">Sensitivity</string>
+    <string name="editor_field_right_click">Right-click behaviour</string>
+    <string name="editor_drives_add">Add drive</string>
+    <string name="editor_drives_empty">No drives mapped yet.</string>
+    <string name="editor_drive_letter">Drive %1$s</string>
+    <string name="editor_drive_host_path">Host path</string>
+    <string name="editor_drive_remove">Remove drive %1$s</string>
+    <string name="editor_input_reset">Reset to global defaults</string>
+    <string name="editor_input_touchpad">Touchpad fallback</string>
+    <string name="editor_input_hide_virtual">Hide virtual controls with hardware attached</string>
+    <string name="editor_not_found">Container not found.</string>
+    <string name="editor_display_dpi">%1$d DPI · %2$d Hz</string>
+
+    <!-- Input settings -->
+    <string name="input_title">Input &amp; shortcuts</string>
+    <string name="input_global_hint">These are the defaults a container uses until it overrides them.</string>
+    <string name="input_section_pointer">Pointer mode</string>
+    <string name="input_section_mouse">Mouse tuning</string>
+    <string name="input_section_buttons">Buttons &amp; fallback</string>
+    <string name="input_section_shortcuts">Session shortcuts</string>
+    <string name="input_mouse_absolute">Absolute</string>
+    <string name="input_mouse_captured">Captured relative</string>
+    <string name="input_mouse_absolute_hint">The touch or mouse position maps straight onto the Windows cursor. Best for trackpads and touch.</string>
+    <string name="input_mouse_captured_hint">The cursor is captured and hidden and movement deltas drive the pointer. Best with an external mouse.</string>
+    <string name="input_sensitivity">Sensitivity</string>
+    <string name="input_sensitivity_value">%1$.2f×</string>
+    <string name="input_scroll">Scroll speed</string>
+    <string name="input_scroll_value">%1$.2f×</string>
+    <string name="input_acceleration">Mouse acceleration</string>
+    <string name="input_acceleration_hint">Adds a curve on top of the raw deltas, like the Windows pointer setting.</string>
+    <string name="input_right_click_x11">Windows right button</string>
+    <string name="input_right_click_back">Android back</string>
+    <string name="input_right_click_hint">What a secondary click does inside a session.</string>
+    <string name="input_touchpad_hint">On-screen trackpad as a fallback when no external mouse is attached.</string>
+    <string name="input_hide_virtual_hint">Keeps the desktop clear while a USB or Bluetooth keyboard is connected.</string>
+    <string name="input_capture_on_click">Capture pointer on first click</string>
+    <string name="input_capture_on_click_hint">The first click grabs the pointer so mouse buttons reach Windows.</string>
+    <string name="input_intercept_shortcuts">Intercept system shortcuts</string>
+    <string name="input_intercept_shortcuts_hint">Sends Ctrl, Alt and Win combinations to Windows instead of Android.</string>
+    <string name="shortcut_toggle_capture">Toggle pointer capture</string>
+    <string name="shortcut_toggle_hud">Toggle in-session HUD</string>
+    <string name="shortcut_exit_session">Exit session</string>
+    <string name="shortcut_hint">Shortcuts are handled inside the session by the X11 surface.</string>
+
+    <!-- Runtime setup -->
+    <string name="runtime_title">Runtime setup</string>
+    <string name="runtime_ready">Runtime ready</string>
+    <string name="runtime_missing">Runtime not installed</string>
+    <string name="runtime_components">Components</string>
+    <string name="runtime_components_body">Every component lives inside the container imagefs extracted from your bundle.</string>
+    <string name="runtime_install_title">Install runtime bundle</string>
+    <string name="runtime_install_body">Pick a .zip bundle that contains imagefs, proot, box64 and wine.</string>
+    <string name="runtime_pick_bundle">Choose .zip bundle</string>
+    <string name="runtime_installing">Installing runtime…</string>
+    <string name="runtime_installed">Runtime installed</string>
+    <string name="runtime_remove">Remove runtime</string>
+    <string name="runtime_remove_title">Remove runtime?</string>
+    <string name="runtime_remove_body">The extracted imagefs and every Wine and Box64 binary will be deleted. Containers are kept.</string>
+    <string name="runtime_references">Open-source references</string>
+    <string name="runtime_references_body">WinDroid builds on these projects. Check their repositories for licensing and payload formats.</string>
+    <string name="runtime_component_installed">Installed</string>
+    <string name="runtime_component_missing">Missing</string>
+    <string name="runtime_import_failed">Import failed: %1$s</string>
+    <string name="runtime_file_unreadable">Cannot open the selected file.</string>
+    <string name="runtime_stage_label">Stage %1$s · %2$s</string>
+    <string name="runtime_component_imagefs">imagefs</string>
+    <string name="runtime_component_proot">proot</string>
+    <string name="runtime_component_box64">box64</string>
+    <string name="runtime_component_wine">wine</string>
+
+    <!-- Session + HUD -->
+    <string name="session_missing_container">Container not found — closing session.</string>
+    <string name="session_state_idle">Idle</string>
+    <string name="session_state_starting">Starting…</string>
+    <string name="session_state_running">Running</string>
+    <string name="session_state_stopping">Stopping…</string>
+    <string name="session_state_error">Session error</string>
+    <string name="hud_mode_wine">Wine + Box64</string>
+    <string name="hud_mode_demo">Demo desktop</string>
+    <string name="hud_expand">Expand session toolbar</string>
+    <string name="hud_collapse">Minimise session toolbar</string>
+    <string name="hud_show">Show session toolbar</string>
+    <string name="hud_hide">Hide HUD</string>
+    <string name="hud_pointer_captured">Captured</string>
+    <string name="hud_pointer_absolute">Absolute</string>
+    <string name="hud_toggle_capture">Toggle pointer capture</string>
+    <string name="hud_combo_win">Win</string>
+    <string name="hud_combo_alt_tab">Alt+Tab</string>
+    <string name="hud_combo_ctrl_alt_del">Ctrl+Alt+Del</string>
+    <string name="hud_combo_esc">Esc</string>
+    <string name="hud_combos_title">Windows combos</string>
+    <string name="hud_logs">Logs</string>
+    <string name="hud_logs_empty">No log output yet.</string>
+    <string name="hud_exit">Exit session</string>
+    <string name="hud_mouse_connected">Mouse</string>
+    <string name="hud_keyboard_connected">Keyboard</string>
+    <string name="hud_devices_none">Touch</string>
+
+</resources>

@@ -37,7 +37,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboard|keyboardHidden|navigation|uiMode"
             android:exported="false"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/Theme.WinDroid" />
+            android:theme="@style/Theme.WinDroid.Session" />
 
     </application>
 

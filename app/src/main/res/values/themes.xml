@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base theme for WinDroid. Compose draws the real UI; this XML theme only
-         provides a black window background and dark system bars so there is no
-         white flash before the first composition, and no ActionBar. -->
+    <!--
+      Base WinDroid theme.
+
+      Material NoActionBar keeps the platform from drawing an ActionBar over the
+      Compose surface; every visual decision (colour, elevation, navigation) is
+      owned by WinDroidTheme in ui/theme/Theme.kt.
+
+      The window background matches the Fluent dark Mica base (#202020) so the
+      first frame does not flash white before Compose attaches.
+    -->
     <style name="Theme.WinDroid" parent="android:Theme.Material.NoActionBar">
-        <item name="android:windowBackground">@android:color/black</item>
-        <item name="android:colorBackground">@android:color/black</item>
-        <item name="android:statusBarColor">@android:color/black</item>
-        <item name="android:navigationBarColor">@android:color/black</item>
+        <item name="android:windowBackground">#FF202020</item>
+        <item name="android:colorBackground">#FF202020</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="android:colorAccent">#FF4CC2FF</item>
+    </style>
+
+    <!--
+      Session theme: the X11 canvas owns the whole display, so the window itself
+      is black and already fullscreen before SessionActivity applies the
+      immersive insets controller.
+    -->
+    <style name="Theme.WinDroid.Session">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
 </resources>
