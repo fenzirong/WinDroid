@@ -3,12 +3,13 @@ name: Android CI
 on:
   push:
     branches: [ main ]
+    tags: [ 'v*' ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: android-ci-${{ github.ref }}
@@ -38,12 +39,25 @@ jobs:
       - name: Run unit tests and assemble debug
         run: gradle testDebugUnitTest assembleDebug --stacktrace --no-daemon
 
+      - name: Stage debug APK for release
+        if: success()
+        run: |
+          set -euo pipefail
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG_OR_SHA="${GITHUB_REF_NAME}"
+          else
+            TAG_OR_SHA="${GITHUB_SHA::7}"
+          fi
+          mkdir -p dist
+          cp app/build/outputs/apk/debug/app-debug.apk "dist/WinDroid-${TAG_OR_SHA}-debug.apk"
+          ls -l dist
+
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         if: success()
         with:
           name: windroid-debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          path: dist/*.apk
           if-no-files-found: error
           retention-days: 14
 
@@ -55,3 +69,64 @@ jobs:
           path: app/build/reports/tests/**
           if-no-files-found: ignore
           retention-days: 7
+
+      - name: Publish GitHub Release
+        if: success() && startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.apk
+          generate_release_notes: true
+          title: "WinDroid ${{ github.ref_name }}"
+          body: |
+            ## WinDroid ${{ github.ref_name }}
+
+            WinDroid is an Android compatibility layer that runs classic Windows
+            applications on Android phones and tablets. It bundles a Wine runtime
+            (Wine + Box64 for x86/x86_64 translation) with an in-process X11
+            server, so Win32 windows are rendered straight into an Android
+            SurfaceView.
+
+            ### Highlights
+
+            - **Wine + Box64 runtime** - runs 32-bit and 64-bit Windows binaries on
+              arm64 devices through Box64 dynamic recompilation.
+            - **Built-in X11 server** - X11 protocol implemented natively on
+              Android; Wine talks to it over a Unix socket with no external
+              X server, no VNC and no root required.
+            - **External mouse support** - pointer capture with relative motion,
+              sensitivity, acceleration, mouse wheel and horizontal scroll.
+            - **External keyboard support** - full X11 keymap translation with
+              modifier tracking (Ctrl/Alt/Shift/Super) and key repeat handling.
+            - **Container manager** - create, edit and launch isolated Wine
+              prefixes with per-container display, DPI and input settings.
+            - **Session HUD overlay** - live pointer/keyboard state, capture mode
+              indicator and a one-tap input release for stuck keys or buttons.
+
+            ### Download
+
+            `WinDroid-${{ github.ref_name }}-debug.apk` is the **debug-signed**
+            build. It is signed with the standard Android debug keystore, so it
+            can be installed directly on any Android 8.0 (API 26) or newer
+            device without extra tooling.
+
+            ### How to sideload
+
+            1. Download `WinDroid-${{ github.ref_name }}-debug.apk` from the
+               **Assets** section below.
+            2. On the phone, open **Settings -> Apps -> Special access ->
+               Install unknown apps** and allow installation for your browser or
+               file manager.
+            3. Open the downloaded APK and confirm the install prompt.
+               (`adb install -r WinDroid-${{ github.ref_name }}-debug.apk` works
+               too if you have platform-tools.)
+            4. Launch **WinDroid**, create a container, then start a session.
+               Plug in a USB or Bluetooth mouse/keyboard for the full desktop
+               experience - touch input works as a trackpad fallback.
+
+            ### Notes
+
+            - Debug builds are not Play-Store distributable; they are intended
+              for sideloading and testing.
+            - Minimum Android version: 8.0 (API 26). Target SDK: 35.
+            - Build artifacts are produced by GitHub Actions from the tagged
+              commit, so the APK matches the source at `${{ github.sha }}`.
